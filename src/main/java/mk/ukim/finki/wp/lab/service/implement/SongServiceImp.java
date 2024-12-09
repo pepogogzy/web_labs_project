@@ -28,6 +28,6 @@ public class SongServiceImp implements SongService {
 
     @Override
     public Song findByTrackId(String trackId) {
-        return songRepository.findByTrackId(trackId);
+        return songRepository.findAllByTrackId(trackId);
     }
 }

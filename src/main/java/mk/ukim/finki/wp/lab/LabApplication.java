@@ -13,4 +13,6 @@ public class LabApplication {
         SpringApplication.run(LabApplication.class, args);
     }
 
+    //pecozmaj : pecozmaj
+
 }

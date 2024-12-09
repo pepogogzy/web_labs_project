@@ -4,26 +4,25 @@ import mk.ukim.finki.wp.lab.bootstrap.DataHolder;
 import mk.ukim.finki.wp.lab.model.Song;
 import mk.ukim.finki.wp.lab.model.Artist;
 import mk.ukim.finki.wp.lab.service.SongService;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class SongRepository {
+public interface SongRepository extends JpaRepository<Song, Long> {
 
-    public List<Song> findAll() {
-        return DataHolder.lista_pesni;
-    }
+    @Query(value = "SELECT * FROM Song", nativeQuery = true)
+    List<Song> findAll();
 
-    public Song findByTrackId(String trackId) {
-        return DataHolder.lista_pesni.stream().filter(song -> song.getTrackId().equals(trackId)).findFirst().orElse(null);
-    }
+    @Query(value = "SELECT * FROM Song WHERE trackId == :tid", nativeQuery = true)
+    Song findAllByTrackId(@Param("tid") String trackId);
 
 
+    Artist addArtistToSong(Artist artist, Song song);
 
-    public Artist addArtistToSong(Artist artist, Song song) {
-        song.getPerformers().add(artist);
-        return artist;
-    }
+    List<Song> findAllByAlbum_Id(Long albumId);
 }
