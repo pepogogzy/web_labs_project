@@ -21,10 +21,11 @@ public class SongServiceImp implements SongService {
         return songRepository.findAll();
     }
 
-    @Override
-    public Artist addArtistToSong(Artist artist, Song song) {
-        return songRepository.addArtistToSong(artist, song);
-    }
+    //@Override
+    //public Artist addArtistToSong(Artist artist, Song song) {
+        //return songRepository.addArtistToSong(artist, song);
+    //    return new Artist();
+    //}
 
     @Override
     public Song findByTrackId(String trackId) {

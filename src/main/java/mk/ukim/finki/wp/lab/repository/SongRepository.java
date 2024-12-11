@@ -21,8 +21,8 @@ public interface SongRepository extends JpaRepository<Song, Long> {
     @Query(value = "SELECT * FROM Song WHERE trackId == :tid", nativeQuery = true)
     Song findAllByTrackId(@Param("tid") String trackId);
 
-
-    Artist addArtistToSong(Artist artist, Song song);
+    //@Query
+    //Artist addArtistToSong(Artist artist, Song song);
 
     List<Song> findAllByAlbum_Id(Long albumId);
 }

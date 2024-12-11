@@ -25,8 +25,8 @@ public class Artist {
     @Column(nullable = false)
     private String bio;
 
-    //@ManyToMany(mappedBy = "id")
-    //private List<Song> songs;
+    @ManyToMany(mappedBy = "id")
+    private List<Song> songs;
 
     public Artist(Long id, String firstName, String lastName, String bio) {
         this.id = id;

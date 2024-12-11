@@ -30,8 +30,8 @@ public class Song {
     @Column(nullable = false)
     private int releaseYear;
 
-    //@ManyToMany(mappedBy = "songs")
-    //private List<Artist> performers;
+    @ManyToMany(mappedBy = "songs")
+    private List<Artist> performers;
 
     @ManyToOne
     private Album album;
