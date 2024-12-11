@@ -11,32 +11,37 @@ import java.util.List;
 
 @Getter
 @Data
+@Entity
 public class Song {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String trackId;
     private String title;
     private String genre;
     private int releaseYear;
-    private List<Artist> performers;
-    private Album album;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    //@ManyToMany(mappedBy = "song")
+    //private List<Artist> performers;
+
+    @ManyToOne()
+    private Album album;
 
     public Song(String trackId, String title, String genre, int releaseYear, Album album) {
         this.trackId = trackId;
         this.title = title;
         this.genre = genre;
         this.releaseYear = releaseYear;
-        this.performers = new ArrayList<>();
+        //this.performers = new ArrayList<>();
         this.album = album;
     }
 
     public Song(){}
 
-    public void addPerformer(Artist performer) {
-        performers.add(performer);
-    }
+    //public void addPerformer(Artist performer) {
+    //    performers.add(performer);
+    //}
 
 }
